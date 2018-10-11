@@ -3,5 +3,6 @@ before_script:
 
 build_image:
   script:
-    - docker build -t  azulinho/gitlab-ci-runner-auto-cleanup:$CI_COMMIT_REF_SLUG .
-
+    - docker login -u $GITLAB_REGISTRY_USER -p $GITLAB_TOKEN registry.gitlab.com
+    - docker build -t registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:$CI_COMMIT_REF_SLUG .
+    - docker push registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:$CI_COMMIT_REF_SLUG
