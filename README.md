@@ -6,8 +6,7 @@ A docker image that will automatically cleanup stale offline gitlab CI runners
 every 'n' seconds.
 
 run as:
-	docker run -it -e GITLAB_TOKEN=XXXXXXXXXX  azulinho/gitlab-ci-runner-auto-cleanup:latest
-
+	docker run -it -e GITLAB_TOKEN=XXXXXXXXXX registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:0.1.0
 
 Where GITLAB_TOKEN is an api token with the required privs.
 
