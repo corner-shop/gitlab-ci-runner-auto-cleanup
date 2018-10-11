@@ -9,3 +9,9 @@ build_image:
 publish_image:
   script:
     - docker push registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:${IMAGE_TAG}
+
+cleanup:
+  script:
+    - docker rmi registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:${IMAGE_TAG}
+  when: always
+
