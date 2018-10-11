@@ -1,16 +1,29 @@
+stages:
+  - setup
+  - build
+  - publish
+  - cleanup
+
 before_script:
   - export IMAGE_TAG=${CI_COMMIT_TAG:-$CI_COMMIT_REF_SLUG}
-  - docker login -u $GITLAB_REGISTRY_USER -p $GITLAB_TOKEN registry.gitlab.com
+
+docker_registry_login:
+  stage: setup
+  script:
+    - docker login -u $GITLAB_REGISTRY_USER -p $GITLAB_TOKEN registry.gitlab.com
 
 build_image:
+  stage: build
   script:
     - docker build -t registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:${IMAGE_TAG} .
 
 publish_image:
+  stage: publish
   script:
     - docker push registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:${IMAGE_TAG}
 
 cleanup:
+  stage: cleanup
   script:
     - docker rmi registry.gitlab.com/thecornershop/gitlab-ci-runner-auto-cleanup:${IMAGE_TAG}
   when: always
