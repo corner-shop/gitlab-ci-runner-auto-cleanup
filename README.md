@@ -1,3 +1,5 @@
+[![pipeline status](https://gitlab.com/theCornerShop/gitlab-ci-runner-auto-cleanup/badges/next-release/pipeline.svg)](https://gitlab.com/theCornerShop/gitlab-ci-runner-auto-cleanup/commits/next-release)
+
 ## gitlab-ci-runner-auto-cleanup
 
 A docker image that will automatically cleanup stale offline gitlab CI runners
